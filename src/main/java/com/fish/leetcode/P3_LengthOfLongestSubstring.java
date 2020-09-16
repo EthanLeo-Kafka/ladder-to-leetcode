@@ -14,7 +14,8 @@ public class P3_LengthOfLongestSubstring {
     public static void main(String[] args) {
         String str = "dvsdfghjklvsdifn";
         // System.err.println(Arrays.toString(str.toCharArray()));
-        System.err.println(lengthOfLongestSubstring(str));
+        // System.err.println(lengthOfLongestSubstring(str));
+        System.err.println(lengthOfLongestSubstring2(str));
     }
 
     // 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
@@ -61,6 +62,29 @@ public class P3_LengthOfLongestSubstring {
             index++;
         }
         return Math.max(longestLength, map.size());
+    }
+
+    /**
+     * 时间复杂度 更小的解法
+     */
+    public static int lengthOfLongestSubstring2(String s) {
+        if (s.length() == 0) return 0;
+        int maxLen = 0, i = 0, left = 0, count = 0;
+        char[] chars = s.toCharArray();
+        Map<Character, Integer> usedMap = new HashMap<>();
+        while (left < s.length() && i < s.length() ){
+            char c = chars[i];
+            if (usedMap.containsKey(c) && usedMap.get(c) >= left){
+                maxLen = Math.max(maxLen, count);
+                left = usedMap.get(chars[i])+1;
+                count = i - left + 1;
+            } else{
+                count++;
+            }
+            usedMap.put(chars[i], i);
+            i++;
+        }
+        return Math.max(count, maxLen);
     }
 
 }
