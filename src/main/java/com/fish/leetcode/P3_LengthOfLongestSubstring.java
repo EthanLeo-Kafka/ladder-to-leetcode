@@ -71,17 +71,17 @@ public class P3_LengthOfLongestSubstring {
         if (s.length() == 0) return 0;
         int maxLen = 0, i = 0, left = 0, count = 0;
         char[] chars = s.toCharArray();
-        Map<Character, Integer> usedMap = new HashMap<>();
+        Map<Character, Integer> usedMap = new HashMap<>(s.length());
         while (left < s.length() && i < s.length() ){
             char c = chars[i];
             if (usedMap.containsKey(c) && usedMap.get(c) >= left){
                 maxLen = Math.max(maxLen, count);
-                left = usedMap.get(chars[i])+1;
+                left = usedMap.get(c)+1;
                 count = i - left + 1;
             } else{
                 count++;
             }
-            usedMap.put(chars[i], i);
+            usedMap.put(c, i);
             i++;
         }
         return Math.max(count, maxLen);
