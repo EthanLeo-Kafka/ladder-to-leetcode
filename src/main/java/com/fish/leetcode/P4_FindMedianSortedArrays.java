@@ -12,8 +12,8 @@ import java.util.List;
 public class P4_FindMedianSortedArrays {
 
     public static void main(String[] args) {
-        int[] nums1 = new int[]{1,2};
-        int[] nums2 = new int[]{1};
+        int[] nums1 = new int[]{1,4};
+        int[] nums2 = new int[]{2,11};
         System.err.println(findMedianSortedArrays(nums1, nums2));
     }
 
@@ -44,35 +44,46 @@ public class P4_FindMedianSortedArrays {
     // 👍 3187 👎 0
 
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        List<Integer> list1 = new ArrayList<>();
-        if ((nums1.length + 1) % 2 == 0) {
-            list1.add(nums1[(nums1.length+1)/2  - 1]);
-        } else {
-            list1.add(nums1[(nums1.length+1)/2  - 1]);
-            list1.add(nums1[(nums1.length+1)/2]);
-        }
-
         double avg1 = 0d;
-        for (Integer integer : list1) {
-            avg1 = avg1 + integer;
+        if (nums1.length != 0) {
+            List<Integer> list1 = new ArrayList<>();
+            if ((nums1.length + 1) % 2 == 0) {
+                list1.add(nums1[(nums1.length+1)/2  - 1]);
+            } else {
+                list1.add(nums1[(nums1.length+1)/2  - 1]);
+                list1.add(nums1[(nums1.length+1)/2]);
+            }
+            for (Integer integer : list1) {
+                avg1 = avg1 + integer;
+            }
+            avg1 = avg1 / list1.size();
         }
-        avg1 = avg1 / list1.size();
 
-        List<Integer> list2 = new ArrayList<>();
-        if ((nums2.length + 1) % 2 == 0) {
-            list2.add(nums2[(nums2.length+1)/2 - 1]);
-        } else {
-            list2.add(nums2[(nums2.length+1)/2 - 1]);
-            list2.add(nums2[(nums2.length+1)/2]);
-        }
 
         double avg2 = 0d;
-        for (Integer integer : list2) {
-            avg2 = avg2 + integer;
+        if (nums2.length != 0) {
+            List<Integer> list2 = new ArrayList<>();
+            if ((nums2.length + 1) % 2 == 0) {
+                list2.add(nums2[(nums2.length+1)/2 - 1]);
+            } else {
+                list2.add(nums2[(nums2.length+1)/2 - 1]);
+                list2.add(nums2[(nums2.length+1)/2]);
+            }
+            for (Integer integer : list2) {
+                avg2 = avg2 + integer;
+            }
+            avg2 = avg2 / list2.size();
         }
-        avg2 = avg2 / list2.size();
 
-        return (avg1 + avg2) / 2;
+        if (Double.compare(avg1, 0d) == 0 || Double.compare(avg2, 0d) == 0) {
+            return Math.max(avg1, avg2);
+        }
+
+        if (((int)avg1) == ((int)avg2)) {
+            return Math.max(avg1, avg2);
+        } else {
+            return (avg1 + avg2) / 2;
+        }
     }
 
 }
