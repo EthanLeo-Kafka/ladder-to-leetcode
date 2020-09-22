@@ -12,7 +12,7 @@ import java.util.Map;
 public class P13_RomanToInt {
 
     public static void main(String[] args) {
-        System.err.println(romanToInt("MCMXCIV"));
+        System.err.println(romanToInt2("MCMXCIV"));
         // System.err.println(romanToInt("III"));
     }
 
@@ -102,11 +102,11 @@ public class P13_RomanToInt {
         char[] chars = s.toCharArray();
         while (i <= chars.length - 1) {
             char c1 = chars[i];
-            if (i+1 >= chars.length) {
+            if (i + 1 >= chars.length) {
                 x += map.get(String.valueOf(c1));
                 break;
             }
-            char c2 = chars[i+1];
+            char c2 = chars[i + 1];
             String roman = String.valueOf(new char[]{c1, c2});
             if (map.containsKey(roman)) {
                 x += map.get(roman);
@@ -117,6 +117,49 @@ public class P13_RomanToInt {
             }
         }
         return x;
+    }
+
+    /**
+     * better way, save time, save space
+     * <p>
+     * 计算时，往后多比较一位。 char[i] < char[i+1] 时， 做减法，减去char[i]；否则，做加法，加上char[i]
+     */
+    public static int romanToInt2(String s) {
+        int sum = 0;
+        int preNum = getValue(s.charAt(0));
+        int num;
+        for (int i = 1; i < s.length(); i++) {
+            num = getValue(s.charAt(i));
+            if (preNum < num) {
+                sum -= preNum;
+            } else {
+                sum += preNum;
+            }
+            preNum = num;
+        }
+        sum += preNum;
+        return sum;
+    }
+
+    private static int getValue(char ch) {
+        switch (ch) {
+            case 'I':
+                return 1;
+            case 'V':
+                return 5;
+            case 'X':
+                return 10;
+            case 'L':
+                return 50;
+            case 'C':
+                return 100;
+            case 'D':
+                return 500;
+            case 'M':
+                return 1000;
+            default:
+                return 0;
+        }
     }
 
 }
