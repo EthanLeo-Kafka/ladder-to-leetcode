@@ -9,7 +9,7 @@ package com.fish.leetcode;
 public class P7_ReverseInteger {
 
     public static void main(String[] args) {
-        System.err.println(reverse(1534236469));
+        System.err.println(reverse2(994236469));
     }
 
 
@@ -40,11 +40,27 @@ public class P7_ReverseInteger {
     // 👍 2199 👎 0
     public static int reverse(int x) {
         long r = 0;
-        while (x!=0) {
-            r = r*10 + x%10;
-            x = x/10;
+        while (x != 0) {
+            r = r * 10 + x % 10;
+            x = x / 10;
         }
-        return (int)r == r ? (int)r : 0;
+        return (int) r == r ? (int) r : 0;
+    }
+
+    public static int reverse2(int x) {
+        int r = 0;
+        while (x != 0) {
+            int mod = x % 10;
+            x /= 10;
+            if (r > Integer.MAX_VALUE / 10 || r == Integer.MAX_VALUE / 10 && mod > 7) {
+                return 0;
+            }
+            if (r < Integer.MIN_VALUE / 10 || r == Integer.MIN_VALUE / 10 && mod < -8) {
+                return 0;
+            }
+            r = r * 10 + mod;
+        }
+        return r;
     }
 
 }
