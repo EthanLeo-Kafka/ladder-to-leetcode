@@ -80,6 +80,8 @@ public class P9_IsPalindrome {
 
     /**
      * better way
+     *
+     * 反转一半，进行比较
      */
     public static boolean isPalindrome3(int x) {
         if (x < 0 || (x != 0 && x % 10 == 0)) {
