@@ -9,7 +9,7 @@ package com.fish.leetcode;
 public class P14_LongestCommonPrefix {
 
     public static void main(String[] args) {
-        System.err.println(longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
+        System.err.println(longestCommonPrefix2(new String[]{"flower", "flow", "flight"}));
     }
 
     // 编写一个函数来查找字符串数组中的最长公共前缀。
@@ -54,6 +54,31 @@ public class P14_LongestCommonPrefix {
             commonPrefix = str.substring(0, j);
         }
         return commonPrefix;
+    }
+
+    /**
+     * 纵向扫描
+     */
+    public static String longestCommonPrefix2(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+        String firstStr = strs[0];
+        int firstStrLength = firstStr.length();
+        int arrLength = strs.length;
+
+        int i = 0;
+        a:
+        for (; i < firstStrLength; i++) {
+            char c = firstStr.charAt(i);
+            for (int j = 1; j < arrLength; j++) {
+                String str = strs[j];
+                if (i >= str.length() || c != str.charAt(i)) {
+                    break a;
+                }
+            }
+        }
+        return firstStr.substring(0,i);
     }
 
 }
