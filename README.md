@@ -1,1 +1,1 @@
-# fish-leetcode
+# algorithm practice，aim to superb.
