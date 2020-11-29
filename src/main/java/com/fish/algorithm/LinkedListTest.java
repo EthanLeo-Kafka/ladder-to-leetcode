@@ -14,7 +14,8 @@ import lombok.Data;
 public class LinkedListTest {
 
     public static void main(String[] args) {
-        singlyLinkedListReverse(createNewSinglyLinkedList());
+        // singlyLinkedListReverse(createNewSinglyLinkedList());
+        singlyLinkedListReverseRecursively(createNewSinglyLinkedList());
     }
 
     /**
@@ -51,7 +52,17 @@ public class LinkedListTest {
      * 单链表反转 - 递归
      */
     public static void singlyLinkedListReverseRecursively(Node<Integer> head) {
+        printLinkedList(doSinglyLinkedListReverseRecursively(head));
+    }
 
+    public static Node<Integer> doSinglyLinkedListReverseRecursively(Node<Integer> head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        Node<Integer> newHead = doSinglyLinkedListReverseRecursively(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
     }
 
     /**
