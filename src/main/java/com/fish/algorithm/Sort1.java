@@ -36,9 +36,11 @@ public class Sort1 {
                     minimumIndex = j;
                 }
             }
-            int temp = array[i];
-            array[i] = array[minimumIndex];
-            array[minimumIndex] = temp;
+            if (minimumIndex != i) {
+                int temp = array[i];
+                array[i] = array[minimumIndex];
+                array[minimumIndex] = temp;
+            }
         }
     }
 
