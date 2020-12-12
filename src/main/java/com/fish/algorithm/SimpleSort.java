@@ -1,5 +1,5 @@
 /*
- * @Title Sort1.java
+ * @Title SimpleSort.java
  */
 package com.fish.algorithm;
 
@@ -11,7 +11,7 @@ import java.util.Arrays;
  * @description 简单排序算法
  * @date 2020/12/8 23:14
  */
-public class Sort1 {
+public class SimpleSort {
 
     public static void main(String[] args) {
         int[] array = {5, 1, 3, 2, 4};
