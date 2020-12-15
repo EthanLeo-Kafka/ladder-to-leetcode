@@ -1,5 +1,5 @@
 /*
- * @Title CountingSort.java
+ * @Title P13_CountingSort.java
  */
 package com.fish.algorithm;
 
@@ -11,7 +11,7 @@ import java.util.Arrays;
  * @description 计数排序 适合排序范围小，数据量大的场景，且只能给非负整数排序
  * @date 2020/12/15 00:22
  */
-public class CountingSort {
+public class P13_CountingSort {
 
     public static void main(String[] args) {
         Integer[] array = {5, 5, 3, 5, 0, 0, 3};
