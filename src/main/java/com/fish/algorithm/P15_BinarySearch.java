@@ -25,6 +25,18 @@ public class P15_BinarySearch {
      * 2. mid 的取值。实际上，mid=(low+high)/2 这种写法是有问题的。因为如果 low 和 high 比较大的话，两者之和就有可能会溢出。
      *
      * 3. low 和 high 的更新。如果直接写成 low=mid 或者 high=mid，就可能会发生死循环。
+     *
+     *
+     *
+     * 二分查找的局限性：
+     *
+     * 1.   二分查找依赖的是顺序表结构，简单点说就是数组
+     *
+     * 2.   二分查找针对的是有序数据
+     *
+     * 3.   数据量太小不适合二分查找。例外情况：如果数据之间的比较操作非常耗时，不管数据量大小，都推荐使用二分查找。
+     *
+     * 4.   数据量太大也不适合二分查找。二分查找依赖数组，数组随机访问的特性要求内存空间连续。
      */
     public static int bsearch(int[] array, int n, int value) {
         int low = 0;
@@ -78,6 +90,7 @@ public class P15_BinarySearch {
         }
         return doBsearchRecursively(array, mid + 1, high, value);
     }
+
 
 
 }
