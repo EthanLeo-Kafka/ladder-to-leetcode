@@ -24,14 +24,15 @@ public class P23_BTree {
     /**
      * 生成一个二叉树
      *
-     * 1
-     * 2  3
-     * 4  5
-     * 6  7
-     * 8  9
+     *               1
+     *             2  3
+     *           4  5
+     *         6  7
+     *       8  9
+     *
      */
     public static TreeNode generateBinaryTree() {
-        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] array = {1,2,3,4,5,6,7,8,9};
         TreeNode root = new TreeNode(array[0]);
         doGenerateBinaryTree(array, 1, root);
         return root;
