@@ -19,6 +19,8 @@ public class P27_RecursiveTree {
 
     /**
      * 分析全排列的时间复杂度
+     *
+     * k表示要处理的子数组的数据个数
      */
     public static void printPermutations(int[] data, int n, int k) {
         if (k == 1) {
