@@ -3,6 +3,8 @@
  */
 package com.fish.algorithm;
 
+import java.util.Arrays;
+
 /**
  * @author yufei.liu
  * @version v1.0
@@ -10,6 +12,12 @@ package com.fish.algorithm;
  * @date 2021/1/2 18:03
  */
 public class P28_HeapSort {
+
+    public static void main(String[] args) {
+        int[] a = {0,9,4,5,6,7,3,1,2};
+        Heap.sort(a, 8);
+        System.err.println(Arrays.toString(a));
+    }
 
 
     /**
@@ -70,6 +78,10 @@ public class P28_HeapSort {
 
         /**
          * 自上往下堆化
+         *
+         * @param a 堆数据存放的数组
+         * @param n 堆中元素的个数，因为我们默认堆从数组a下标1开始，所以n其实等于a.length-1
+         * @param i 堆化的节点
          */
         public static void heapify(int[] a, int n, int i) {
             while (true) {
@@ -80,7 +92,7 @@ public class P28_HeapSort {
                     maxPosition = i * 2;
                 }
                 // 比较右子节点
-                if (i * 2 + 1 <= n && a[i * 2 + 1] > a[i]) {
+                if (i * 2 + 1 <= n && a[i * 2 + 1] > a[maxPosition]) {
                     maxPosition = i * 2 + 1;
                 }
                 // 自己就是最大的值，跳出循环
@@ -96,13 +108,10 @@ public class P28_HeapSort {
 
 
         /**
-         * 对已存在的数组，建队
-         *
-         * @param a 已存在的数组
-         * @param n 已存在的数组的大小
+         * 对已存在的数组，建堆
          */
         public static void buildHeap(int[] a, int n) {
-            for (int i = n / 2; i > 1; i--) {
+            for (int i = n / 2; i >= 1; i--) {
                 heapify(a, n, i);
             }
         }
