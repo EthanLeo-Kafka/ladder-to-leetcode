@@ -94,7 +94,7 @@ public class P23_BTree {
 
 
     @Data
-    public static class TreeNode {
+    private static class TreeNode {
 
         private Integer val;
 
