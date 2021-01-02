@@ -81,7 +81,7 @@ public class P28_HeapSort {
          *
          * @param a 堆数据存放的数组
          * @param n 堆中元素的个数，因为我们默认堆从数组a下标1开始，所以n其实等于a.length-1
-         * @param i 堆化的节点
+         * @param i 堆化开始的节点
          */
         public static void heapify(int[] a, int n, int i) {
             while (true) {
