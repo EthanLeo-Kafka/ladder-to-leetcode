@@ -17,6 +17,11 @@ public class App {
         int[] a2 = new int[3];
         System.arraycopy(a, 3, a2, 0, 3);
         System.err.println(Arrays.toString(a2));
+
+
+        System.err.println("------");
+        System.err.println(1<<30);
+        System.err.println(Integer.MAX_VALUE - 8);
     }
 
 }

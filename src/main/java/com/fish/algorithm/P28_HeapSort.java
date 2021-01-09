@@ -14,8 +14,8 @@ import java.util.Arrays;
 public class P28_HeapSort {
 
     public static void main(String[] args) {
-        int[] a = {0,9,4,5,6,7,3,1,2};
-        Heap.sort(a, 8);
+        int[] a = {0,7,5,19,8,4,1,20,13,16};
+        Heap.sort(a, 9);
         System.err.println(Arrays.toString(a));
     }
 
