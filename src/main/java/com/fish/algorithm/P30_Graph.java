@@ -133,7 +133,7 @@ public class P30_Graph {
         graph.addEdge(5, 7);
         graph.addEdge(6, 7);
 
-        //graph.bfs(0, 6);
-        graph.dfs(0, 6);
+        graph.bfs(0, 6);
+        //graph.dfs(0, 6);
     }
 }
