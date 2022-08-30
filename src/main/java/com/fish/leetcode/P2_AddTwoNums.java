@@ -61,6 +61,24 @@ public class P2_AddTwoNums {
         return head.next;
     }
 
+    public static ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+        ListNode dummyNode = new ListNode(0);
+        ListNode curNode = dummyNode;
+        int sum;
+        int carry = 0;
+        while (l1 != null || l2 != null || carry > 0) {
+            int l1Val = l1 == null ? 0 : l1.val;
+            int l2Val = l2 == null ? 0 : l2.val;
+            sum = l1Val + l2Val + carry;
+            carry = sum / 10;
+            curNode.next = new ListNode(sum % 10);
+            curNode = curNode.next;
+            l1 = l1 == null ? null : l1.next;
+            l2 = l2 == null ? null : l2.next;
+        }
+        return dummyNode.next;
+    }
+
     @Data
     @NoArgsConstructor
     public static class ListNode {

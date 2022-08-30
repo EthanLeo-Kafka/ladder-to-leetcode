@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * @author yufei.liu
  * @version v1.0
- * @description
+ * @description 罗马计数法 转 阿拉伯数字
  * @date 2020:09:22 16:11
  */
 public class P13_RomanToInt {
@@ -162,4 +162,25 @@ public class P13_RomanToInt {
         }
     }
 
+    public static int romanToInt3(String s) {
+        Map<Character, Integer> map = new HashMap<>(8);
+        map.put('M', 1000);
+        map.put('D', 500);
+        map.put('C', 100);
+        map.put('L', 50);
+        map.put('X', 10);
+        map.put('V', 5);
+        map.put('I', 1);
+
+        int sum = 0;
+        for (int i = 0, length = s.length(); i < length; i++) {
+            if (i < length - 1 &&  map.get(s.charAt(i)) < map.get(s.charAt(i+1))) {
+                sum += (map.get(s.charAt(i+1)) - map.get(s.charAt(i)));
+                i = i+1;
+            } else {
+                sum += map.get(s.charAt(i));
+            }
+        }
+        return sum;
+    }
 }
