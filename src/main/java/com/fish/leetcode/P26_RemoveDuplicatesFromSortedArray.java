@@ -9,26 +9,21 @@ package com.fish.leetcode;
 public class P26_RemoveDuplicatesFromSortedArray {
 
     public static void main(String[] args) {
-        System.err.println(removeDuplicates(new int[]{1,2,2,3,3,3}));
+        int[] array = {1, 1, 1, 2, 2, 3, 4, 4, 4, 4, 5, 6, 6, 6};
+        int i = removeDuplicates(array);
+        System.err.println(i);
     }
 
     /**
      * 有序数组 清除重复元素
      */
     public static int removeDuplicates(int[] nums) {
-        // iterator thru array
-        int i = 1;
-        // current index
-        int j = 0;
-        for (; i < nums.length; i++) {
-            // new number
-            if (nums[i] != nums[j]) {
-                // move current index
-                j++;
-                // fill current index with new number
-                nums[j] = nums[i];
+        int i = nums.length > 0 ? 1 : 0;
+        for (int j = 0; j < nums.length; j++) {
+            if (nums[j] > nums[i-1]) {
+                nums[i++] = nums[j];
             }
         }
-        return j + 1;
+        return i;
     }
 }
