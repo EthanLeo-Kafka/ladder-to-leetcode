@@ -34,7 +34,7 @@ public class P39_BackTracingAlgorithm {
                 // 满足要求，第row行的queen放在第column列
                 result[row] = column;
                 // 继续下一行计算
-                calc8queens(row+1);
+                calc8queens(row + 1);
             }
         }
     }
@@ -72,13 +72,14 @@ public class P39_BackTracingAlgorithm {
         for (int row = 0; row < 8; ++row) {
             for (int column = 0; column < 8; ++column) {
                 if (result[row] == column) {
-                    System.err.print("Q ");
+                    System.err.print("Q  ");
                 } else {
-                    System.err.print("* ");
+                    System.err.print("*  ");
                 }
             }
             System.err.println();
         }
         System.err.println();
     }
+
 }
